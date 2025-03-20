@@ -364,20 +364,20 @@ void update_bridge(
     }
   }
 
-  // remove obsolete ros2 services
-  for (auto it = service_bridges_1_to_2.begin(); it != service_bridges_1_to_2.end(); ) {
-    if (ros2_services.find(it->first) == ros2_services.end()) {
-      printf("Removed 1 to 2 bridge for service %s\n", it->first.data());
-      try {
-        it->second.server.shutdown();
-        it = service_bridges_1_to_2.erase(it);
-      } catch (std::runtime_error & e) {
-        fprintf(stderr, "There was an error while removing 1 to 2 bridge: %s\n", e.what());
-      }
-    } else {
-      ++it;
-    }
-  }
+  // // remove obsolete ros2 services
+  // for (auto it = service_bridges_1_to_2.begin(); it != service_bridges_1_to_2.end(); ) {
+  //   if (ros2_services.find(it->first) == ros2_services.end()) {
+  //     printf("Removed 1 to 2 bridge for service %s\n", it->first.data());
+  //     try {
+  //       it->second.server.shutdown();
+  //       it = service_bridges_1_to_2.erase(it);
+  //     } catch (std::runtime_error & e) {
+  //       fprintf(stderr, "There was an error while removing 1 to 2 bridge: %s\n", e.what());
+  //     }
+  //   } else {
+  //     ++it;
+  //   }
+  // }
 }
 
 void get_ros1_service_info(
